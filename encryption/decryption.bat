@@ -1,0 +1,1 @@
+openssl enc -d -aes-256-cbc -pbkdf2 -in encrypted_image.png -out decrypted_image.png -pass pass:password.txt
