@@ -1,2 +1,2 @@
 # CEG-4981
-Code for Team Projects 2
+Shared repository for Team Projects 2
