@@ -18,11 +18,17 @@ def find_red_circles(image_path):
 
     image_hsv = cv2.cvtColor(blurred_image, cv2.COLOR_BGR2HSV)
 
-    lower_red = np.array([0, 120, 70])
-    upper_red = np.array([10, 255, 255])
+    # Red has two separate ranges in the HSV color scheme,
+    # so we need two separate masks to detect it.
+    lower_red1 = np.array([0, 120, 70])
+    upper_red1 = np.array([10, 255, 255])
+    lower_red2 = np.array([170, 120, 70])
+    upper_red2 = np.array([180, 255, 255])
 
-    mask = cv2.inRange(image_hsv, lower_red, upper_red)
-    red_image = cv2.bitwise_and(image, image, mask=mask)
+    mask1 = cv2.inRange(image_hsv, lower_red1, upper_red1)
+    mask2 = cv2.inRange(image_hsv, lower_red2, upper_red2)
+    red_mask = mask1 + mask2
+    red_image = cv2.bitwise_and(image, image, mask=red_mask)
 
     _, _, gray = cv2.split(red_image)
 
@@ -34,8 +40,8 @@ def find_red_circles(image_path):
         rows / 8,
         param1=100,
         param2=30,
-        minRadius=1,
-        maxRadius=30
+        minRadius=0,
+        maxRadius=0
     )
 
     if circles is not None:
