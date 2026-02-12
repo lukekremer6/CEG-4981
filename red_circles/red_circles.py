@@ -20,9 +20,9 @@ def find_red_circles(image_path):
 
     # Red has two separate ranges in the HSV color scheme,
     # so we need two separate masks to detect it.
-    lower_red1 = np.array([0, 120, 70])
+    lower_red1 = np.array([0, 210, 150])
     upper_red1 = np.array([10, 255, 255])
-    lower_red2 = np.array([170, 120, 70])
+    lower_red2 = np.array([170, 210, 150])
     upper_red2 = np.array([180, 255, 255])
 
     mask1 = cv2.inRange(image_hsv, lower_red1, upper_red1)
@@ -40,7 +40,7 @@ def find_red_circles(image_path):
         rows / 8,
         param1=100,
         param2=30,
-        minRadius=0,
+        minRadius=5,
         maxRadius=0
     )
 
