@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebel Alliance Server</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Rebel Alliance Intercepts</h1>
+            <p>Authorized Personnel Only</p>
+        </header>
+
+        <section id="gallery-section">
+            <h2>Intercepted Intelligence</h2>
+            <div id="gallery-container" class="scrollable-table">
+                <p class="loading">Scanning frequency bands...</p>
+            </div>
+        </section>
+
+        <section id="public-video-section">
+            <h2>Public Transmission</h2>
+            <div class="video-container">
+                <video controls width="100%">
+                    <source src="/videos/PublicVideo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <section id="secure-section">
+            <h2>Top Secret Clearance</h2>
+
+            <div id="login-form">
+                <div id="step-email">
+                    <p>Enter your authorized Rebel ID (Email) to access classified data.</p>
+                    <input type="email" id="email-input" placeholder="pilot@rebel.org">
+                    <button onclick="requestCode()">Request Access Code</button>
+                </div>
+
+                <div id="step-code" class="hidden">
+                    <p>Enter the 6-digit code sent to your comms device.</p>
+                    <input type="text" id="code-input" placeholder="123456" maxlength="6">
+                    <button onclick="verifyCode()">Initialize Decryption</button>
+                    <button class="secondary" onclick="resetLogin()">Cancel</button>
+                </div>
+            </div>
+
+            <div id="secret-content" class="hidden">
+                <div class="alert-box">
+                    <h3>ACCESS GRANTED</h3>
+                    <p>Decoding Princess Leia's Message...</p>
+                </div>
+                <div class="video-container">
+                    <video controls width="100%" id="secret-video">
+                        <source src="/videos/PrivateVideo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Rebel Alliance Server Node 127.0.0.1</p>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
